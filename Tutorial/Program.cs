@@ -24,12 +24,12 @@ var scheduler = await schedulerFactory.GetScheduler();
 
 // define the job and tie it to our HelloJob class
 var job = JobBuilder.Create<HelloJob>()
-    .WithIdentity("myJob", "group1")
+    .WithIdentity(name: "myJob", group: "group1")
     .Build();
 
 // Trigger the job to run now, and then every 40 seconds
 var trigger = TriggerBuilder.Create()
-    .WithIdentity("myTrigger", "group1")
+    .WithIdentity(name: "myTrigger", group: "group1")
     .StartNow()
     .WithSimpleSchedule(x => x
         .WithIntervalInSeconds(5)
